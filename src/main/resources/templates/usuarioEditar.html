@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title><span th:text="#{persona.editar.titulo}"/></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<body>
+
+	
+	<div class="starter-template">
+        <h1><span  th:text="#{empresa}" /></h1>
+         <h2 th:text="${formBean.dni} ? #{persona.editar.titulo}: #{persona.registrar.titulo}" />
+    </div>
+    
+	<form  th:action="@{/personasEditar}" th:object="${formBean}" method="post">
+		<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+	    <input type="hidden" id="editando" th:field="*{editando}">
+	    <table border="0" style="align-self: center;">
+			 
+	        <tr>
+	            <td><label th:text="#{usuario.dni}" /></td>
+	            <div th:if="${formBean.editando}">
+		            	<td><label th:text="*{dni}"/></td>
+		            	<input type="hidden" id="id" th:field="*{dni}">
+	    
+		        </div>
+		        <div th:if="${!formBean.editando}">
+		            	<td><input type="number" th:field="*{dni}"/></td>
+		        </div>
+	             <!--<td> <p th:if="${#fields.hasErrors('dni')}" th:errorclass="error" th:errors="*{dni}" /> </td>-->
+	             <td> 
+		             <ul>
+				        <li th:each="err : ${#fields.errors('dni')}" th:text="${err}" class="error" />
+				    </ul> 
+			   	</td>
+	        </tr>
+	        <tr>
+	            <td><label th:text="#{usuario.nombre}" /></td>
+	            <td><input type="text" th:field="*{nombre}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('nombre')}" th:errorclass="error" th:errors="*{nombre}" /> </td> 
+	        </tr>
+	        <tr>
+	            <td><label th:text="#{usuario.apellido}" /></td>
+	            <td><input type="text" th:field="*{apellido}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('apellido')}" th:errorclass="error" th:errors="*{apellido}" /> </td> 
+	        </tr>
+	        
+	           
+	  </table>
+	  <table class="botones">
+	
+	      <tr>
+		      <td><input type="submit" name="action" value="Aceptar" /></td>
+		      <td><input type="submit" name="action" value="Cancelar" /></td>
+	      </tr>
+	        
+	    </table>
+	    
+	    
+	   
+	</form>
+</body>
+</html>
