@@ -20,7 +20,7 @@ import cons.service.HrService;
 import jakarta.validation.Valid;
 
 	@Controller
-	@RequestMapping("/HrBuscar")
+	@RequestMapping("/hrBuscar")
 	public class HrBuscarController {
 		
 		@Autowired
@@ -34,7 +34,7 @@ import jakarta.validation.Valid;
 	    	//form.setIdCiudadSeleccionada(1L); //Esto es por ejemplo, si quisiera setear un valor por defecto en el filtro de ciudad 
 //	    	 form.setCiudades(serviceCiudad.getAll());    //  en lugar de esto hacemos @ModelAttribute("allCiudades")
 	       modelo.addAttribute("formBean",form);
-	       return "personasBuscar";
+	       return "hrBuscar";
 	    }
 	   
 	    @RequestMapping( method=RequestMethod.POST)
@@ -53,7 +53,7 @@ import jakarta.validation.Valid;
 		            result.addError(error);
 				}
 	        	modelo.addAttribute("formBean",formBean);
-	        	return "HojaDeRutaBuscar";
+	        	return "hrBuscar";
 	    	}
 	    
 	    	
@@ -66,7 +66,7 @@ import jakarta.validation.Valid;
 	    	if(action.equals("Registrar"))
 	    	{
 	    		modelo.clear();
-	    		return "redirect:/personasEditar";
+	    		return "redirect:/hrEditar";
 	    	}
 	    		
 	    	return "redirect:/";

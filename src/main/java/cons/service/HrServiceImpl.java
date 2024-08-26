@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cons.controller.dto.HrBuscarDTO;
 import cons.dataAccess.IHrRepo;
@@ -14,7 +15,7 @@ import cons.entities.Hr;
 import cons.entities.Pallet;
 import cons.exceptions.Exepcion;
 
-
+@Service
 public class HrServiceImpl implements HrService{
 	
 //	Logger LOG = LoggerFactory.getLogger(CiudadService.class);

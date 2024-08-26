@@ -24,7 +24,7 @@ public class HrRegistroDTO {
 	private String gramaje;
 	
 	@NotNull
-	private Calidad idCalidad;
+	private Long idCalidad;
 	
 	@NotNull
 	private Double kilos;
@@ -55,7 +55,7 @@ public class HrRegistroDTO {
 	
 		this.descripcion = hr.getDescripcion();
 		this.gramaje = hr.getGramaje();
-		this.idCalidad = hr.getCalidad();
+		this.idCalidad = hr.getCalidad().getId();
 		this.kilos = hr.getKilos();
 		this.largo = hr.getLargo();
 		this.ancho = hr.getAncho();
@@ -91,14 +91,15 @@ public class HrRegistroDTO {
 		this.gramaje = gramaje;
 	}
 
-	public Calidad getIdCalidad() {
+	
+	public Long getIdCalidad() {
 		return idCalidad;
 	}
 
-	public void setIdCalidad(Calidad idCalidad) {
+	public void setIdCalidad(Long idCalidad) {
 		this.idCalidad = idCalidad;
 	}
-	
+
 	public Double getKilos() {
 		return kilos;
 	}
