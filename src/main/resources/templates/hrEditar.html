@@ -29,7 +29,7 @@
 	
 	<div class="starter-template">
         <h1><span  th:text="#{empresa}" /></h1>
-         <h2 th:text="${formBean.dni} ? #{persona.editar.titulo}: #{persona.registrar.titulo}" />
+         <h2 th:text="${formBean.id} ? #{persona.editar.titulo}: #{persona.registrar.titulo}" />
     </div>
     
 	<form  th:action="@{/hrEditar}" th:object="${formBean}" method="post">
@@ -47,7 +47,7 @@
 		        <div th:if="${!formBean.editando}">
 		            	<td><input type="number" th:field="*{id}"/></td>
 		        </div>
-	             <!--<td> <p th:if="${#fields.hasErrors('dni')}" th:errorclass="error" th:errors="*{dni}" /> </td>-->
+	         
 	             <td> 
 		             <ul>
 				        <li th:each="err : ${#fields.errors('id')}" th:text="${err}" class="error" />
@@ -67,7 +67,7 @@
 	        <tr>
 	            <td><label th:text="#{persona.f.nac}" /></td>
 	            <td><input type="text" id="fecha" autocomplete="off" th:field="*{fecha}" placeholder="DD/MM/YYYY" /></td> 
-	            <td> <p th:if="${#fields.hasErrors('fechaN')}" th:errorclass="error" th:errors="*{fecha}" /> </td> 
+	            <td> <p th:if="${#fields.hasErrors('fecha')}" th:errorclass="error" th:errors="*{fecha}" /> </td> 
 	         </tr>
 	        <tr>
 	            <td><label th:text="#{persona.ciudad}" /></td>

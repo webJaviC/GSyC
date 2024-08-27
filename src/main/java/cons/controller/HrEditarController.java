@@ -55,7 +55,7 @@ public class HrEditarController {
 	public String deleteHrById(Model model, @PathVariable("id") Long id) 
 	{
 		service.deleteHrByid(id);
-		return "redirect:/HrBuscar";
+		return "redirect:/hrBuscar";
 	}
  
     
@@ -101,7 +101,7 @@ public class HrEditarController {
 		            
 		            
 		            modelo.addAttribute("formBean",formBean);
-	    			return "Editar";//Como existe un error me quedo en la misma pantalla
+	    			return "hrEditar";//Como existe un error me quedo en la misma pantalla
 				}
     		}
 
@@ -114,7 +114,7 @@ public class HrEditarController {
     	if(action.equals("Cancelar"))
     	{
     		modelo.clear();
-    		return "redirect:/hrBuscar";
+    		return "admin/administrador";
     	}
     		
     	return "redirect:/";

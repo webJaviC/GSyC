@@ -60,7 +60,7 @@ import jakarta.validation.Valid;
 	    	if(action.equals("Cancelar"))
 	    	{
 	    		modelo.clear();
-	    		return "redirect:/";
+	    		return "admin/administrador";
 	    	}
 	    	
 	    	if(action.equals("Registrar"))

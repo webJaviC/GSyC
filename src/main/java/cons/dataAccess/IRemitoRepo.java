@@ -14,7 +14,7 @@ public interface IRemitoRepo extends JpaRepository<Remito, Long> {
 
 
 	 @Query("SELECT c FROM Remito c WHERE c.fecha = ?1 or c.id = ?2")
-	 List<Remito> findByFechaOrIdRemito(Date fecha, Long idRemito);
+	 List<Remito> findByFechaOrIdRemito(LocalDate localDate, Long idRemito);
 	
 	
 }

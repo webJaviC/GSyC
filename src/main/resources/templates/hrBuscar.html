@@ -26,15 +26,7 @@
                 <td><label th:text="#{persona.nombre}"></label></td>
                 <td><input type="text" th:field="*{descripcion}" /></td>
             </tr>
-            <tr>
-                <td><label th:text="#{persona.ciudad}"></label></td>
-                <td>
-                    <select th:field="*{idCalidadSeleccionada}">
-                        <option th:value="null" th:text="Seleccione una opción"></option>
-                        <option th:each="c : ${allCalidad}" th:value="${c.id}" th:text="${c.nombre}"></option>
-                    </select>
-                </td>
-            </tr>
+            
         </table>
         
         <table class="botones">

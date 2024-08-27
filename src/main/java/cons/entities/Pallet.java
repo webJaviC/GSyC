@@ -29,8 +29,20 @@ public class Pallet {
 	 @ManyToOne
 	    @JoinColumn(name = "calidad_id") // Add this annotation
 	    private Calidad calidad;
+	 
+	 @ManyToOne
+	    @JoinColumn(name = "remito_id")
+	    private Remito remito;
 	
 	//getters and setters//
+
+	public Remito getRemito() {
+		return remito;
+	}
+
+	public void setRemito(Remito remito) {
+		this.remito = remito;
+	}
 
 	public Long getId() {
 		return id;
@@ -96,5 +108,5 @@ public class Pallet {
 	public void setCalidad(Calidad calidad) {
 		this.calidad = calidad;
 	}
-	
+
 }
