@@ -3,13 +3,16 @@ package cons.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import cons.controller.dto.PalletBuscarDTO;
 import cons.dataAccess.IPalletRepo;
 import cons.entities.Pallet;
 import cons.exceptions.Exepcion;
+import jakarta.validation.Valid;
 
 
-
+@Service
 public class PalletServiceImpl implements PalletService{
 	
 //	Logger LOG = LoggerFactory.getLogger(CiudadService.class);
@@ -62,6 +65,26 @@ public class PalletServiceImpl implements PalletService{
 			repo.save(c);
 		
 	}
+
+
+
+	@Override
+	public Pallet getById(List<Long> idPallet) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Pallet> filter(@Valid PalletBuscarDTO formBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	
 
 
 }

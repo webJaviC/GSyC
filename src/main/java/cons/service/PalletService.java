@@ -2,8 +2,10 @@ package cons.service;
 
 import java.util.List;
 
+import cons.controller.dto.PalletBuscarDTO;
 import cons.entities.Pallet;
 import cons.exceptions.Exepcion;
+import jakarta.validation.Valid;
 
 
 
@@ -21,13 +23,17 @@ public interface PalletService {
 	 * @param idCiudad Identificador de la ciudad buscada
 	 * @return Ciudad encontrada
 	 */
-	Pallet getById(Long idPallet) ;
+	Pallet getById(List<Long> idPallet) ;
 	
 //	List<Pallet> filter(PalletBuscarForm filter) throws Exepcion;
 
 	void deleteByid(Long id);
 
 	void save(Pallet p) throws Exepcion;
+
+	Pallet getById(Long idPallet);
+
+	List<Pallet> filter(@Valid PalletBuscarDTO formBean);
 
 	
 }

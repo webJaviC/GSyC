@@ -29,25 +29,25 @@
 	
 	<div class="starter-template">
         <h1><span  th:text="#{empresa}" /></h1>
-         <h2 th:text="${formBean.id}" />
+         <h2 th:text="${formBean.id} " >Editar Pallet</h2>
     </div>
     
-	<form  th:action="@{/hrEditar}" th:object="${formBean}" method="post">
+	<form  th:action="@{/palletEditar}" th:object="${formBean}" method="post">
 		<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
 	    <input type="hidden" id="editando" th:field="*{editando}">
 	    <table border="0" style="align-self: center;">
 			 
 	        <tr>
-	            <td><label th:text="nro" /></td>
+	            <td><label th:text="#{nroPallet}" /></td>
 	            <div th:if="${formBean.editando}">
-		            	<td><label th:text="*{id}"/></td>
+		            	<td><label th:text="*{dni}"/></td>
 		            	<input type="hidden" id="id" th:field="*{id}">
 	    
 		        </div>
 		        <div th:if="${!formBean.editando}">
 		            	<td><input type="number" th:field="*{id}"/></td>
 		        </div>
-	         
+	             <!--<td> <p th:if="${#fields.hasErrors('dni')}" th:errorclass="error" th:errors="*{dni}" /> </td>-->
 	             <td> 
 		             <ul>
 				        <li th:each="err : ${#fields.errors('id')}" th:text="${err}" class="error" />
@@ -55,22 +55,39 @@
 			   	</td>
 	        </tr>
 	        <tr>
-	            <td><label th:text="Descripcion" /></td>
-	            <td><input type="text" th:field="*{descripcion}" /></td> 
-	            <td> <p th:if="${#fields.hasErrors('descripcion')}" th:errorclass="error" th:errors="*{descripcion}" /> </td> 
-	        </tr>
-	        <tr>
-	            <td><label th:text="Gramaje" /></td>
+	            <td><label th:text="gramaje" /></td>
 	            <td><input type="text" th:field="*{gramaje}" /></td> 
 	            <td> <p th:if="${#fields.hasErrors('gramaje')}" th:errorclass="error" th:errors="*{gramaje}" /> </td> 
 	        </tr>
 	        <tr>
-	            <td><label th:text="Fecha" /></td>
+	            <td><label th:text="Kilos.Neto" /></td>
+	            <td><input type="number" th:field="*{kilosNeto}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('kilosNeto')}" th:errorclass="error" th:errors="*{kilosNeto}" /> </td> 
+	        </tr>
+	        <tr>
+	            <td><label th:text="Kilos.Bruto" /></td>
+	            <td><input type="number" th:field="*{kilosBruto}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('kilosBruto')}" th:errorclass="error" th:errors="*{kilosBruto}" /> </td> 
+	        </tr>
+	        <tr>
+	            <td><label th:text="ancho" /></td>
+	            <td><input type="number" th:field="*{ancho}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('ancho')}" th:errorclass="error" th:errors="*{ancho}" /> </td> 
+	        </tr>
+	        <tr>
+	            <td><label th:text="largo" /></td>
+	            <td><input type="number" th:field="*{largo}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('largo')}" th:errorclass="error" th:errors="*{largo}" /> </td> 
+	        </tr>
+	     <!--   <tr>
+	            <td><label th:text="fecha" /></td>
 	            <td><input type="text" id="fecha" autocomplete="off" th:field="*{fecha}" placeholder="DD/MM/YYYY" /></td> 
 	            <td> <p th:if="${#fields.hasErrors('fecha')}" th:errorclass="error" th:errors="*{fecha}" /> </td> 
-	         </tr>
+	            
+	                    
+	        </tr>-->
 	        <tr>
-	            <td><label th:text="Calidad" /></td>
+	            <td><label th:text="calidad" /></td>
 	            <td>
 			        <select th:field="*{idCalidad}">
 					  <option th:each="c : ${allCalidad}" 
@@ -79,22 +96,8 @@
 					</select>
 				</td>
 			</tr>
-	        <tr>
-	            <td><label th:text="Kilos" /></td>
-	            <td><input type="number" th:field="*{kilos}" step="0.001"/></td> 
-	            <td> <p th:if="${#fields.hasErrors('kilos')}" th:errorclass="error" th:errors="*{kilos}" /> </td> 
-	        </tr>
 	        
-	         <tr>
-	            <td><label th:text="Largo" /></td>
-	            <td><input type="number" th:field="*{largo}" step="0.001"/></td> 
-	            <td> <p th:if="${#fields.hasErrors('largo')}" th:errorclass="error" th:errors="*{largo}" /> </td> 
-	        </tr>
-	        <tr>
-	            <td><label th:text="Ancho" /></td>
-	            <td><input type="number" th:field="*{ancho}" step="0.001"/></td> 
-	            <td> <p th:if="${#fields.hasErrors('ancho')}" th:errorclass="error" th:errors="*{ancho}" /> </td> 
-	        </tr>
+	         
 	  </table>
 	  <table class="botones">
 	

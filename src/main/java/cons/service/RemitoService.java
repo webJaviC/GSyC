@@ -2,6 +2,7 @@ package cons.service;
 
 import java.util.List;
 
+import cons.controller.dto.RemitoBuscarDTO;
 import cons.entities.Remito;
 import cons.exceptions.Exepcion;
 
@@ -25,7 +26,7 @@ public interface RemitoService {
 	 */
 	Remito getById(Long idRemito) ;
 	
-	//List<Remito> filter(RemitoBuscarForm filter) throws Exepcion;
+	List<Remito> filter(RemitoBuscarDTO filter) throws Exepcion;
 
 	void deleteByid(Long id);
 

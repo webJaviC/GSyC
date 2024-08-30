@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cons.controller.dto.RemitoBuscarDTO;
 import cons.dataAccess.IRemitoRepo;
 import cons.entities.Remito;
 import cons.exceptions.Exepcion;
@@ -33,18 +34,18 @@ public class RemitoServiceImpl implements RemitoService {
 		return repo.findById(idCiudad).get();
 	}
 	
-	/*@Override
-	public List<Remito> filter(RemitoBuscarForm filter) throws Exepcion
+	@Override
+	public List<Remito> filter(RemitoBuscarDTO filter) throws Exepcion
 	{
 		//ver https://docs.spring.io/spring-data/jpa/docs/1.5.0.RELEASE/reference/html/jpa.repositories.html
-		if(filter.getNombre()==null && filter.getProvinciaSeleccionada()==null)
+		if(filter.getId()==null && filter.getFecha()==null)
 			//return repo.findAll();
 			throw new Exepcion("Es necesario al menos un filtro");
 		else
-			return repo.findByNombreOrIdProvincia(filter.getNombre(),filter.getProvinciaSeleccionada());
+			return repo.findByFechaOrIdRemito(filter.getFecha(),filter.getId());
 				
 	}
-*/
+
 
 
 	@Override

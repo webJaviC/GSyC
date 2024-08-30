@@ -10,7 +10,7 @@
     <div class="starter-template">
         <h1><span th:text="#{empresa}"></span></h1>
         <h2>
-            <span th:text="#{persona.buscar.titulo}"></span>
+            <span th:text="Buscar_hr"></span>
         </h2>
     </div>
     
@@ -19,11 +19,11 @@
         
         <table border="1" style="align-self: center;">
             <tr>
-                <td><label th:text="#{persona.dni}"></label></td>
+                <td><label th:text="Nro_hr"></label></td>
                 <td><input type="number" th:field="*{id}" /></td>
             </tr>
             <tr>
-                <td><label th:text="#{persona.nombre}"></label></td>
+                <td><label th:text="Descripcion"></label></td>
                 <td><input type="text" th:field="*{descripcion}" /></td>
             </tr>
             
@@ -40,10 +40,11 @@
         <table class="resultados" border="0" style="align-self: center;">
             <thead>
                 <tr>
-                    <th><label th:text="#{persona.id}"></label></th>
-                    <th><label th:text="#{persona.descripcion}"></label></th>
-                    <th><label th:text="#{persona.gramaje}"></label></th>
-                    <th><label th:text="#{persona.fecha}"></label></th>
+                    <th><label th:text="nro"></label></th>
+                    <th><label th:text="descripcion"></label></th>
+                    <th><label th:text="gramaje"></label></th>
+                    <th><label th:text="fecha"></label></th>
+                    
                     <th></th>
                     <th></th>
                 </tr>

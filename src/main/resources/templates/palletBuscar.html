@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title><span th:text="#{persona.buscar.titulo}"></span></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+
+	<div class="starter-template">
+        <h1><span  th:text="#{empresa}" /></h1>
+        <h2>
+            <span th:text="Buscar_Pallet"></span>
+            
+        </h2>
+    </div>
+    
+	<form  th:action="@{/palletBuscar}" th:object="${formBean}" method="post">
+		<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
+		
+		<table border="1" style="align-self: center;">
+			<tr>
+	            <td><label th:text="nro_Pallet" /></td>
+	            <td><input type="number" th:field="*{id}"  />
+	             
+	             </td>
+	             	
+	        </tr>
+	        <tr>
+	            <td><label th:text="gramaje" /></td>
+	            <td><input type="text" th:field="*{gramaje}" /></td>
+	            
+	        </tr>
+	       
+	        
+	         <tr>
+	            <td><label th:text="gramaje" /></td>
+	            <td>
+			        <select th:field="*{idCalidadSeleccionada}">
+						<option th:value="null" text="Seleccione una opción"></option>
+					    <option th:each="c : ${allCalidad}" 
+					          th:value="${c.id}" 
+					          th:text="${c.nombre}"></option>
+					</select>
+				</td>
+			</tr>
+	  </table>
+	  <table class="botones">
+	
+	      <tr>
+		      <td><input type="submit" name="action" value="Buscar" /></td>
+		      <td><input type="submit" name="action" value="Cancelar" /></td>
+		      <td><input type="submit" name="action" value="Registrar" /></td>
+	      </tr>
+	        
+	    </table>
+	    
+	    
+	    <table  class="resultados" border="0" style="align-self: center;">
+		    <thead>
+		      <tr>
+		        <th ><label th:text="#{persona.dni}" /></th>
+		        <th ><label th:text="#{persona.nombre}" /></th>
+		         <th ><label th:text="#{persona.apellido}" /></th>
+		        <th ><label th:text="#{persona.f.nac}" /></th>
+		        <th ></th>
+		        <th ></th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr th:each="p : ${resultados}">
+				    <td th:text="${{p.id}}"></td> 
+				    <td th:text="${{p.calidad.nombre}}" ></td>
+			        <td th:text="${{p.gramaje}}"></td>
+			        <td th:text="${{p.kilosNeto}}"></td>
+			        <td th:text="${{p.kilosBruto}}"></td>
+			        <td th:text="${{p.fecha}}" ></td>
+			       
+			        <td>
+	                    <a th:href="@{/palletEditar/{id}(id=${p.id})}" class="btn btn-primary">
+	                        editar
+	                    </a>
+	                </td>
+	                <td>
+	                    <a th:href="@{/palletEditar/delete/{id}(id=${p.id})}" class="btn btn-primary">
+	                        eliminar
+	                    </a>
+	                </td>
+			        
+		      </tr>
+		    </tbody>
+	    </table>
+	</form>
+</body>
+</html>	
