@@ -61,29 +61,30 @@ public class RemitoEditarController {
 			return "redirect:/remitoBuscar";
 		}
 
-	 @RequestMapping(method = RequestMethod.POST)
-	 public String submit(@ModelAttribute("formBean") @Valid RemitoRegistroDTO formBean, BindingResult result, ModelMap modelo, @RequestParam String action) {
 
-	     if (action.equals("Aceptar")) {
-	         if (result.hasErrors()) {
-	             modelo.addAttribute("formBean", formBean);
-	             return "remitoEditar";
-	         } else {
-	             try {
-	                 Remito remito = formBean.toPojo(servicioPallet);
-	                 
-	                 // Convertir la lista de IDs a una lista de objetos Pallet
-	                 List<Pallet> pallets = formBean.getIdPallet().stream()
-	                         .map(id -> servicioPallet.getById(id))  // Asume que servicioPallet.getById(id) devuelve un objeto Pallet
-	                         .collect(Collectors.toList());
+		 @RequestMapping(method = RequestMethod.POST)
+		 public String submit(@ModelAttribute("formBean") @Valid RemitoRegistroDTO formBean, BindingResult result, ModelMap modelo, @RequestParam String action) {
 
-	                 // Asignar la lista de Pallets al Remito
-	                 remito.setPallets(pallets);
-	                 
-	                 // Guardar el remito con los pallets asociados
-	                 servicioRemito.save(remito);
+		     if (action.equals("Aceptar")) {
+		         if (result.hasErrors()) {
+		             modelo.addAttribute("formBean", formBean);
+		             return "remitoEditar";
+		         } else {
+		             try {
+		                 Remito remito = formBean.toPojo();
+		                 
+		                 // Convertir la lista de IDs a una lista de objetos Pallet
+		                 List<Pallet> pallets = formBean.getPallets().stream()
+		                         .map(id -> servicioPallet.getById(id))  // Asume que servicioPallet.getById(id) devuelve un objeto Pallet
+		                         .collect(Collectors.toList());
 
-	                 return "redirect:/remitoBuscar";
+		                 // Asignar la lista de Pallets al Remito
+		                 remito.setPallets(pallets);
+		                 
+		                 // Guardar el remito con los pallets asociados
+		                 servicioRemito.save(remito);
+
+		                 return "redirect:/remitoBuscar";
 	             } catch (Exepcion e) {
 	                 if (e.getAtributo() == null) {
 	                     ObjectError error = new ObjectError("globalError", e.getMessage());

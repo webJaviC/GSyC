@@ -68,11 +68,11 @@ public class PalletServiceImpl implements PalletService{
 
 
 
-	@Override
+/*	@Override
 	public Pallet getById(List<Long> idPallet) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 
 
@@ -80,6 +80,14 @@ public class PalletServiceImpl implements PalletService{
 	public List<Pallet> filter(@Valid PalletBuscarDTO formBean) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	@Override
+	public Pallet getById(Pallet id) {
+	    
+	    return null;
 	}
 
 

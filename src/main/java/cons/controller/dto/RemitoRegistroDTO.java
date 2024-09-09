@@ -1,6 +1,7 @@
 package cons.controller.dto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.v4.runtime.misc.NotNull;
@@ -17,7 +18,7 @@ public class RemitoRegistroDTO {
 	@NotNull
 	private LocalDate fecha;
 	 @NotNull
-	    private List<Long> idPallet;
+	 private List<Pallet> pallets;
 	 
 	 @Transient
 		private Boolean editando = false;
@@ -34,7 +35,7 @@ public class RemitoRegistroDTO {
 		super();
 		this.id = r.getId();
 		this.fecha = r.getFecha();
-		
+		this.pallets = new ArrayList<>();
 	}
 
 	public RemitoRegistroDTO() {
@@ -58,15 +59,19 @@ public class RemitoRegistroDTO {
 		this.fecha = fecha;
 	}
 
-	public List<Long> getIdPallet() {
-		return idPallet;
-	}
+	public List<Pallet> getPallets() {
+        return pallets;
+    }
+    
+    public void addPallet(Pallet pallet) {
+        this.pallets.add(pallet);
+    }
+    
+    public void setIdPallets(List<Pallet> pallets) {
+        this.pallets = pallets;
+    }
 
-	public void setIdPallet(List<Long> idPallet) {
-		this.idPallet = idPallet;
-	}
-
-	 public Remito toPojo(PalletService palletService) {
+	/* public Remito toPojo(PalletService palletService) {
 	        Remito r = new Remito();
 	        r.setId(this.id);
 	        r.setFecha(this.fecha);
@@ -75,6 +80,14 @@ public class RemitoRegistroDTO {
 	        r.setPallets(pallets);
 	        this.editando = true;
 	        return r;
-	    }
+	    } */
+    public Remito toPojo() {
+        Remito r = new Remito();
+        r.setId(this.id);
+        r.setFecha(this.fecha);
+        r.setPallets(this.pallets);
+        this.editando = true;
+        return r;
+    }
 	
 }

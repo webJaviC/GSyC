@@ -23,7 +23,7 @@ public interface PalletService {
 	 * @param idCiudad Identificador de la ciudad buscada
 	 * @return Ciudad encontrada
 	 */
-	Pallet getById(List<Long> idPallet) ;
+	Pallet getById(Pallet id) ;
 	
 //	List<Pallet> filter(PalletBuscarForm filter) throws Exepcion;
 
