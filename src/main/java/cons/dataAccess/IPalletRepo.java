@@ -18,4 +18,7 @@ public interface IPalletRepo extends JpaRepository<Pallet, Long> {
 	
 	@Query("SELECT p FROM Pallet p WHERE p.gramaje like :gramaje and p.id=:id")
 	List<Pallet> findPalletsByGramajeAndId(String gramaje, Long id);
+
+	@Query("SELECT p FROM Pallet p WHERE p.gramaje = :gramaje")
+	List<Pallet> findPalletsByGramaje(String gramaje);
 }

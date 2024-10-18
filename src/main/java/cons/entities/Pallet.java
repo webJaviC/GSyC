@@ -1,6 +1,12 @@
 package cons.entities;
 
+import java.util.List;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,8 +17,13 @@ import jakarta.persistence.Transient;
 public class Pallet {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private int codigo;
+	
+	
+
 	private String gramaje;
 	
 	private Double kilosNeto;
@@ -32,17 +43,27 @@ public class Pallet {
 	 
 	 @ManyToOne
 	    @JoinColumn(name = "remito_id")
-	    private Remito remito;
+	 private Remito remito;
 	
 	//getters and setters//
 
-	public Remito getRemito() {
-		return remito;
-	}
+	 public int getCodigo() {
+			return codigo;
+		}
 
-	public void setRemito(Remito remito) {
-		this.remito = remito;
-	}
+		public void setCodigo(int codigo) {
+			this.codigo = codigo;
+		}
+	 
+	
+
+	public Remito getRemito() {
+			return remito;
+		}
+
+		public void setRemito(Remito remito) {
+			this.remito = remito;
+		}
 
 	public Long getId() {
 		return id;

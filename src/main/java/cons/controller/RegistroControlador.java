@@ -1,6 +1,7 @@
 package cons.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +21,9 @@ import cons.service.UsuarioService;
 			return "login";
 		}
 		
-		@GetMapping("/")
-		public String verPaginaDeInicio(Model modelo) {
-			modelo.addAttribute("usuarios", servicio.listarUsuarios());
+	@GetMapping("/")
+		public String verPaginaDeInicio() {
+		//	modelo.addAttribute("usuarios", servicio.listarUsuarios());
 			return "index";
 	}
 

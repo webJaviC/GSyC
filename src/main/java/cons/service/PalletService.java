@@ -35,5 +35,7 @@ public interface PalletService {
 
 	List<Pallet> filter(@Valid PalletBuscarDTO formBean);
 
+	List<Pallet> getByIds(List<Long> palletsIds);
+
 	
 }

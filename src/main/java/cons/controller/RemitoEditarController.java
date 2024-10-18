@@ -2,6 +2,7 @@ package cons.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,12 +75,10 @@ public class RemitoEditarController {
 		                 Remito remito = formBean.toPojo();
 		                 
 		                 // Convertir la lista de IDs a una lista de objetos Pallet
-		                 List<Pallet> pallets = formBean.getPallets().stream()
-		                         .map(id -> servicioPallet.getById(id))  // Asume que servicioPallet.getById(id) devuelve un objeto Pallet
-		                         .collect(Collectors.toList());
+		                 Set<Pallet> pallets = (Set<Pallet>) servicioPallet.getByIds(formBean.getPalletsIds());
 
 		                 // Asignar la lista de Pallets al Remito
-		                 remito.setPallets(pallets);
+		                 remito.setListProduc(getAllPallet());
 		                 
 		                 // Guardar el remito con los pallets asociados
 		                 servicioRemito.save(remito);
@@ -101,11 +100,10 @@ public class RemitoEditarController {
 
 	     if (action.equals("Cancelar")) {
 	         modelo.clear();
-	         return "redirect:/remitoBuscar";
+	         return "admin/administrador";
 	     }
 
 	     return "redirect:/";
 	 }
 
-	 
 }

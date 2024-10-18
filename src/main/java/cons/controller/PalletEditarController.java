@@ -61,55 +61,27 @@ public class PalletEditarController {
     @RequestMapping( method=RequestMethod.POST)
     public String submit(@ModelAttribute("formBean") @Valid PalletRegistroDTO formBean,BindingResult result, ModelMap modelo,@RequestParam String action) throws Exception  {
     	
-    	
     	if(action.equals("Aceptar"))
     	{
-    		//para poner errores personalizados asociados a
-//            FieldError error2 = new FieldError("formBean","dni","este es otro error.");
-//            result.addError(error2);
-//    		ObjectError error = new ObjectError("globalError", "aplicacion en modo demo, no puede continuar");
-//            result.addError(error);
-            
-    		if(result.hasErrors())
-    		{
-    			
-                
-    			modelo.addAttribute("formBean",formBean);
-    			 return "palletEditar";
-    		}
-    		else
-    		{
-    			Pallet p=formBean.toPojo();
-    			p.setCalidad(serviceCalidad.getById(formBean.getIdCalidad()));
-    			try {
-    				service.save(p);
-					
-					return "redirect:/palletBuscar";
-				} catch (Exepcion e) {
-					if(e.getAtributo()==null) //si la excepcion estuviera referida a un atributo del objeto, entonces mostrarlo al lado del compornente (ej. dni)
-					{
-						ObjectError error = new ObjectError("globalError", e.getMessage());
-			            result.addError(error);
-					}
-					else
-					{
-			    		FieldError error1 = new FieldError("formBean",e.getAtributo(),e.getMessage());
-			            result.addError(error1);
-
-					}
-		            
-		            
-		            modelo.addAttribute("formBean",formBean);
-	    			return "palletEditar";//Como existe un error me quedo en la misma pantalla
-				}
-    		}
-
-    		
-        	
-        	
+    		if (result.hasErrors()) {
+                modelo.addAttribute("formBean", formBean);
+                return "palletEditar";
+            } else {
+                Pallet p = formBean.toPojo();
+                p.setCalidad(serviceCalidad.getById(formBean.getIdCalidad()));
+                try {
+                    service.save(p);
+                    return "redirect:/palletBuscar";
+                } catch (Exepcion e) {
+                    // manejar la excepción
+                    ObjectError error = new ObjectError("globalError", e.getMessage());
+                    result.addError(error);
+                    modelo.addAttribute("formBean", formBean);
+                    return "palletEditar";
+                }
+            }
     	}
     
-    	
     	if(action.equals("Cancelar"))
     	{
     		modelo.clear();
@@ -120,8 +92,4 @@ public class PalletEditarController {
     	
     	
     }
-
-
- 
 }
-

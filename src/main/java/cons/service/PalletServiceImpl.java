@@ -59,14 +59,15 @@ public class PalletServiceImpl implements PalletService{
 
 	@Override
 	public void save(Pallet c) throws Exepcion {
-		if(c.getId()==null && !repo.findPalletsByGramajeAndId(c.getGramaje(), c.getId()).isEmpty()) //estoy dando de alta un nuevo pallet y ya existe una igual?
-			throw new Exepcion("Ya existe un pallet con el mismo gramaje, para el mismo numero de pallet");  
-		else
-			repo.save(c);
-		
+	    if (c.getId() != null) {
+	        // Check if a pallet with the same gramaje and id already exists
+	        List<Pallet> existingPallets = repo.findPalletsByGramajeAndId(c.getGramaje(), c.getId());
+	        if (!existingPallets.isEmpty()) {
+	            throw new Exepcion("Ya existe un pallet con el mismo gramaje y id");
+	        }
+	    }
+	    repo.save(c);
 	}
-
-
 
 /*	@Override
 	public Pallet getById(List<Long> idPallet) {
@@ -90,8 +91,9 @@ public class PalletServiceImpl implements PalletService{
 	    return null;
 	}
 
-
-
+	public List<Pallet> getByIds(List<Long> ids) {
+        return repo.findAllById(ids);
+    }
 	
 
 

@@ -6,8 +6,10 @@ import jakarta.validation.constraints.NotNull;
 
 public class PalletRegistroDTO {
 
-	@NotNull
+	
 	private Long id;
+	
+	private int codigo;
 	
 	@NotNull
 	private String gramaje;
@@ -37,7 +39,7 @@ public class PalletRegistroDTO {
 
 	public PalletRegistroDTO(Pallet p) {
 		super();
-		
+		this.codigo = p.getCodigo();
 		this.gramaje = p.getGramaje();
 		this.kilosNeto = p.getKilosNeto();
 		this.kilosBruto = p.getKilosBruto();
@@ -52,6 +54,7 @@ public class PalletRegistroDTO {
 		if (this.editando) {
 			p.setId(this.getId());
 		}
+			p.setCodigo(this.getCodigo());
 			p.setGramaje(this.getGramaje());
 			p.setKilosNeto(this.getKilosNeto());
 			p.setKilosBruto(this.getKilosBruto());
@@ -59,7 +62,14 @@ public class PalletRegistroDTO {
 			p.setLargo(this.getLargo());
 			return p;
 		}
-	
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
 
 	public Long getId() {
 		return id;

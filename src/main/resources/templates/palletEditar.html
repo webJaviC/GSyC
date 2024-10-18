@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title><span th:text="#{persona.editar.titulo}"/></title>
+    <title><span th:text="#{pallet Editar}"/></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
@@ -36,23 +36,27 @@
 		<p th:each="err : ${#fields.errors('global')}" th:text="${err}" class="error" />
 	    <input type="hidden" id="editando" th:field="*{editando}">
 	    <table border="0" style="align-self: center;">
-			 
 	        <tr>
 	            <td><label th:text="#{nroPallet}" /></td>
 	            <div th:if="${formBean.editando}">
-		            	<td><label th:text="*{dni}"/></td>
+		            	<td><label th:text="*{id}"/></td>
 		            	<input type="hidden" id="id" th:field="*{id}">
 	    
 		        </div>
 		        <div th:if="${!formBean.editando}">
 		            	<td><input type="number" th:field="*{id}"/></td>
 		        </div>
-	             <!--<td> <p th:if="${#fields.hasErrors('dni')}" th:errorclass="error" th:errors="*{dni}" /> </td>-->
+	             <!--<td> <p th:if="${#fields.hasErrors('id')}" th:errorclass="error" th:errors="*{id}" /> </td>-->
 	             <td> 
 		             <ul>
 				        <li th:each="err : ${#fields.errors('id')}" th:text="${err}" class="error" />
 				    </ul> 
 			   	</td>
+	        </tr>
+	        <tr>
+	            <td><label th:text="Codigo" /></td>
+	            <td><input type="number" th:field="*{codigo}" /></td> 
+	            <td> <p th:if="${#fields.hasErrors('codigo')}" th:errorclass="error" th:errors="*{codigo}" /> </td> 
 	        </tr>
 	        <tr>
 	            <td><label th:text="gramaje" /></td>

@@ -59,10 +59,13 @@
 	    <table  class="resultados" border="0" style="align-self: center;">
 		    <thead>
 		      <tr>
-		        <th ><label th:text="#{persona.dni}" /></th>
-		        <th ><label th:text="#{persona.nombre}" /></th>
-		         <th ><label th:text="#{persona.apellido}" /></th>
-		        <th ><label th:text="#{persona.f.nac}" /></th>
+				<th ><label th:text="Nro_Pallet" /></th>
+		        <th ><label th:text="Codigo" /></th>
+		        <th ><label th:text="Calidad" /></th>
+		        <th ><label th:text="Gramaje" /></th>
+		        <th ><label th:text="Kilos_Neto" /></th>
+		        <th ><label th:text="Kilos_Bruto" /></th>
+		        <th ><label th:text="Fecha" /></th>
 		        <th ></th>
 		        <th ></th>
 		      </tr>
@@ -70,6 +73,7 @@
 		    <tbody>
 		      <tr th:each="p : ${resultados}">
 				    <td th:text="${{p.id}}"></td> 
+				    <td th:text="${{p.codigo}}"></td>
 				    <td th:text="${{p.calidad.nombre}}" ></td>
 			        <td th:text="${{p.gramaje}}"></td>
 			        <td th:text="${{p.kilosNeto}}"></td>

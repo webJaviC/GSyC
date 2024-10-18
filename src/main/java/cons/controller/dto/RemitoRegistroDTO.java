@@ -19,8 +19,22 @@ public class RemitoRegistroDTO {
 	private LocalDate fecha;
 	 @NotNull
 	 private List<Pallet> pallets;
+	 @NotNull
+	 private List<Long> palletsIds;
 	 
-	 @Transient
+	 public List<Long> getPalletsIds() {
+		return palletsIds;
+	}
+
+	public void setPalletsIds(List<Long> palletsIds) {
+		this.palletsIds = palletsIds;
+	}
+
+	public void setPallets(List<Pallet> pallets) {
+		this.pallets = pallets;
+	}
+
+	@Transient
 		private Boolean editando = false;
 
 	public Boolean getEditando() {

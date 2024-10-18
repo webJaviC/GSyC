@@ -27,7 +27,7 @@ public class PalletBuscarController {
 	@Autowired
     private PalletService service;
 	@Autowired
-    private CalidadService serviceCiudad;
+    private CalidadService serviceCalidad;
      
     @RequestMapping(method=RequestMethod.GET)
     public String preparaForm(Model modelo) {
@@ -39,9 +39,9 @@ public class PalletBuscarController {
     }
      
     
-    @ModelAttribute("allCiudades")
-    public List<Calidad> getAllCiudades() {
-        return this.serviceCiudad.getAll();
+    @ModelAttribute("allCalidad")
+    public List<Calidad> getAllCalidad() {
+        return this.serviceCalidad.getAll();
     }
     
     @RequestMapping( method=RequestMethod.POST)
